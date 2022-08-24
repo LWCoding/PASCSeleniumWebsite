@@ -1,8 +1,37 @@
 :root {
-    --blue: rgb(21, 4, 71);
+    --blue: rgb(24, 12, 67);
+    --blue-alt: rgb(148, 135, 187);
     --orange: rgb(236, 163, 26);
+    --header-height: 120px;
+    --footer-height: 80px;
 }
 
 html {
     background-color: #ebded6;
+    overflow: none;
+}
+
+html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
+
+#app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#enrichment-container {
+    margin-top: calc(var(--header-height) + 35px);
+    margin-bottom: calc(var(--footer-height) + 20px);
+}
+
+.mobile {
+    display: none;
+}
+
+@media only screen and (max-width: 500px) {
+    .mobile {
+        display: block !important;
+    }
 }

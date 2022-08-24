@@ -1,7 +1,11 @@
 #footer {
     width: 100%;
+    height: var(--footer-height);
     background-color: var(--blue);
     padding: 0.6em;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
 }
 
 #footer-contents {

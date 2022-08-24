@@ -1,21 +1,29 @@
 // REACT
-import React, { Component } from 'react'
+import React, { Component } from "react";
 // COMPONENTS
-import EnrichBlock from './EnrichBlock.js';
+import EnrichBlock from "./EnrichBlock.js";
+// CSS
+import "./EnrichContainer.css";
 
 export class EnrichContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.enrichments = []
-        this.enrichments.push(<EnrichBlock name="Name" description="Hello" host="Lucas" roomName="Room 112" weekdays="M W F" />);
-    }
-    render() {
-        return (
-        <div>
-            {this.enrichments}
-        </div>
-        )
-    }
+  constructor(props) {
+    super(props);
+    this.enrichments = [];
+    this.enrichments = this.props.enrichments.map((e) => {
+      return (
+        <EnrichBlock
+          name={e.name}
+          description={e.description}
+          weekdays={e.weekdays}
+          host={e.host}
+          roomName={e.roomName}
+        />
+      );
+    });
+  }
+  render() {
+    return <div id="enrichment-container">{this.enrichments}</div>;
+  }
 }
 
-export default EnrichContainer
+export default EnrichContainer;
