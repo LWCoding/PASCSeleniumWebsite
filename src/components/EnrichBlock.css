@@ -1,0 +1,35 @@
+#enrichment-block {
+    width: 600px;
+}
+
+#enrichment-block {
+    border-top: 10px solid var(--orange);
+    background-color: white;
+    padding: 15px;
+}
+
+#enrichment-block:hover {
+    cursor: pointer;
+    background-color: rgb(236, 236, 236);
+}
+
+#enrichment-title {
+    font-size: 1.3em;
+}
+
+#enrichment-add-info {
+    color: rgb(120, 120, 120);
+    margin-left: 0.5ch;
+    font-style: italic;
+    font-size: 0.65em;
+}
+
+#enrichment-description {
+    padding-left: 2ch;
+    margin: 0.7ch 0;
+    border-left: 4px solid rgb(180, 180, 180);
+}
+
+#enrichment-about {
+    font-style: italic;
+}

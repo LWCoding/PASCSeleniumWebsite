@@ -1,0 +1,8 @@
+:root {
+    --blue: rgb(21, 4, 71);
+    --orange: rgb(236, 163, 26);
+}
+
+html {
+    background-color: #ebded6;
+}

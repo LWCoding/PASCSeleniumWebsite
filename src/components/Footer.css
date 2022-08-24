@@ -1,0 +1,21 @@
+#footer {
+    width: 100%;
+    background-color: var(--blue);
+    padding: 0.6em;
+}
+
+#footer-contents {
+    display: flex;
+    flex-direction: row;
+}
+
+#footer-contents span {
+    color: white;
+}
+
+#footer-contents-right {
+    flex: 1;
+    text-align: right;
+    margin-top: auto;
+    font-weight: bold;
+}
