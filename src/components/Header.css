@@ -23,6 +23,10 @@
     margin: 18px 15px;
 }
 
+#logo:hover {
+    cursor: pointer;
+}
+
 #header h1 {
     color: white;
     font-size: 1.8em;

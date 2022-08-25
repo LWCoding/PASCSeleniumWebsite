@@ -1,7 +1,9 @@
-import Header from "./Header.js";
-import Footer from "./Footer.js";
-import EnrichContainer from "./EnrichContainer.js";
-import "./App.css";
+// REACT
+import React, { Component } from "react";
+// COMPONENTS
+import EnrichBlock from "./EnrichBlock.js";
+// CSS
+import "./EnrichList.css";
 
 var enrichments = [
   {
@@ -84,14 +86,26 @@ var enrichments = [
   },
 ];
 
-function App() {
-  return (
-    <div id="app-container">
-      <Header />
-      <EnrichContainer enrichments={enrichments} />
-      <Footer />
-    </div>
-  );
+export class EnrichContainer extends Component {
+  constructor(props) {
+    super(props);
+    let i = 0; // To keep track of keys
+    this.enrichments = enrichments.map((e) => {
+      return (
+        <EnrichBlock
+          key={i++}
+          name={e.name}
+          description={e.description}
+          weekdays={e.weekdays}
+          host={e.host}
+          roomName={e.roomName}
+        />
+      );
+    });
+  }
+  render() {
+    return <div id="enrichment-container">{this.enrichments}</div>;
+  }
 }
 
-export default App;
+export default EnrichContainer;

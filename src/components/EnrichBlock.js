@@ -7,13 +7,6 @@ import "./EnrichBlock.css";
 const maxDescriptionLength = 200;
 
 export class EnrichBlock extends Component {
-  constructor(props) {
-    super(props);
-    this.description =
-      this.props.description.length > maxDescriptionLength
-        ? this.props.description.substring(0, 200).trim() + "..."
-        : this.props.description;
-  }
   render() {
     return (
       <div>
@@ -22,7 +15,7 @@ export class EnrichBlock extends Component {
             {this.props.name} <br id="enrichment-add-info-break" />
             <span id="enrichment-add-info">{this.props.weekdays}</span>
           </h2>
-          <p id="enrichment-description">{this.description}</p>
+          <p id="enrichment-description">{this.props.description.length > maxDescriptionLength ? this.props.description.substring(0, 200).trim() + "..." : this.props.description}</p>
           <p id="enrichment-about">
             Enrichment led by {this.props.host} in {this.props.roomName}.
           </p>

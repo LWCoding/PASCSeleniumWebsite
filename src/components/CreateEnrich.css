@@ -1,0 +1,43 @@
+#create-enrichment {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+#create-enrichment-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#create-enrichment-form input[type="text"], #create-enrichment textarea {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; /* Default font from root. */
+    width: 50ch;
+    font-size: 0.9em;
+    padding: 0.2em;
+}
+
+#create-enrichment-form textarea {
+    resize: none;
+    height: 10ch;
+}
+
+#create-enrichment-preview {
+    width: 50vw !important;
+}
+
+#checkbox-container {
+    margin: 10px 0 ;
+}
+
+#checkbox-container input {
+    margin: 5px;
+}
+
+@media only screen and (max-width: 962px) {
+    #create-enrichment {
+        flex-direction: column;
+    }
+}
+

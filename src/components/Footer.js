@@ -1,3 +1,5 @@
+// React
+import { Link } from 'react-router-dom';
 // CSS
 import "./Footer.css";
 
@@ -13,7 +15,8 @@ function Footer() {
           <span>Phone Number: (773) 534-0034</span>
         </div>
         <div id="footer-contents-right">
-          <span>Created by Lucas Wang, 12th Grade for PASC 2022</span>
+        <Link to="/create">Create an Enrichment</Link><br />
+          <span>Created by Lucas Wang, PASC 2022</span>
         </div>
       </div>
     </div>

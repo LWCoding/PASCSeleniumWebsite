@@ -9,7 +9,7 @@ function Header() {
       <div id="banner">
         <div id="header-design" />
         <div id="header-design-corner" />
-        <img id="logo" src={wpcpLogo} alt="School emblem" />
+        <img id="logo" onClick={() => { window.location.href = '/'; }} src={wpcpLogo} alt="School emblem" />
         <div id="school-text">
           <h2>Walter Payton College Prep</h2>
           <h1>Selenium Enrichment Website</h1>
