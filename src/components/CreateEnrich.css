@@ -1,7 +1,7 @@
 #create-enrichment {
     display: flex;
     flex-direction: row;
-    margin: 20px;
+    margin: 20px 30px;
 }
 
 #create-enrichment-form {
@@ -9,7 +9,7 @@
     flex-direction: column;
 }
 
-#create-enrichment-form input[type="text"], #create-enrichment textarea {
+#create-enrichment-form input[type="text"], #create-enrichment-form input[type="date"], #create-enrichment textarea {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; /* Default font from root. */
@@ -18,26 +18,51 @@
     padding: 0.2em;
 }
 
+#create-enrichment-form p {
+    margin-bottom: 0.4em;
+    max-width: calc(50ch - 2em);
+}
+
 #create-enrichment-form textarea {
     resize: none;
     height: 10ch;
 }
 
-#create-enrichment-preview {
-    width: 50vw !important;
+#create-enrichment-preview #enrichment-block {
+    width: calc(100vw - 490px) !important;
+    margin-left: 30px;
 }
 
-#checkbox-container {
-    margin: 10px 0 ;
+#create-enrichment-time {
+    margin: 10px 0;
 }
 
-#checkbox-container input {
+#create-enrichment-choose-time {
+    margin-top: 10px;
+}
+
+#single-day-container {
+
+}
+
+#weekdays-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#create-enrichment-form input[type="radio"], #create-enrichment-form input[type="checkbox"] {
     margin: 5px;
 }
 
-@media only screen and (max-width: 962px) {
+@media only screen and (max-width: 768px) {
     #create-enrichment {
         flex-direction: column;
+        align-items: center;
+    }
+    #create-enrichment-preview #enrichment-block {
+        width: 80vw !important;
+        margin-top: 20px;
+        margin-left: 0;
     }
 }
 

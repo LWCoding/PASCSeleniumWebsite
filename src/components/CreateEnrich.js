@@ -5,13 +5,33 @@ import EnrichBlock from './EnrichBlock.js';
 // CSS
 import './CreateEnrich.css';
 
+/*
+    Placeholder template to be rendered on empty input fields.
+*/
 var placeholder = {
-    name: "Video Game Design and Development",
+    name: "My Enrichment",
     description:
-      "Interested in story writing, graphic design, music composition, programming, or maybe even something else? Game development may be the interest for you!\n\nThis club will be mainly interested in developing a conceptual understanding of the structures that make up video games and some syntax in the C# programming language. We'll be working towards gaining familiarity with the Unity Engine (which has created some VERY popular games, such as Hearthstone, Hollow Knight, Pokémon Go, Among Us), but downloading it isn't a prerequisite!\n\nThis club is also a community to develop or refine your creative skills, with the hopes of you creating projects of your own or as a team! We hope to see you there.",
-    host: "Lucas Wang",
-    roomName: "Room 112",
-    weekdays: "Mon Tue Wed Thu Fri",
+      "Tell us a little bit more about your Enrichment! Your description might include what type of activities are present, what topics will be covered, etc. Be creative!",
+    host: "Me",
+    roomName: "Room 000",
+    weekdaySingle: "Single Day, " + getFormattedDate(),
+    weekdayRecur: "No dates chosen"
+}
+
+/*
+    Formats the current date to MM/DD/YYYY.
+*/
+function getFormattedDate() {
+    let d = new Date();
+    return `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`
+}
+
+/*
+    Formats the current date to YYYY-MM-DD.
+*/
+function getHTMLFormattedDate(date) {
+    let d = new Date(date);
+    return `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')}`
 }
 
 export class CreateEnrich extends Component {
@@ -22,7 +42,9 @@ export class CreateEnrich extends Component {
             eDesc: "",
             eWeekdays: "",
             eHost: "",
-            eRoom: ""
+            eRoom: "",
+            isSingleDay: true,
+            singleDay: getHTMLFormattedDate(new Date())
         }
     }    handleNameChange = (e) => {
         this.setState({ eName: e.target.value });
@@ -36,32 +58,85 @@ export class CreateEnrich extends Component {
     handleHostChange = (e) => {
         this.setState({ eHost: e.target.value });
     }
+    handleDayChange = (e) => {
+        this.setState({ eRoom: this.eRoom + e.target.value + " " })
+    }
+    handleDateChange = (e) => {
+        this.setState({ singleDay: getHTMLFormattedDate(e.target.value) })
+    }
+    handleTimeChoiceChange = (e) => {
+        this.setState({ isSingleDay: e.target.value === "single-day" })
+    }
     render() {
         return (
             <div id="create-enrichment">
                 <form id="create-enrichment-form">
+                    <h2>Create Enrichment</h2>
+                    <p>
+                        Want to create your own Enrichment? Fill in the following fields,
+                        and a request will be sent to await approval. Check your inbox
+                        for additional information after submitting the form.
+                    </p>
                     <input type="text" onChange={this.handleNameChange} placeholder="Enrichment Name" />
                     <textarea onChange={this.handleDescChange} placeholder="Enrichment Description" />
                     <input type="text" onChange={this.handleHostChange} placeholder="Host Name"/>
-                    <input type="text" onChange={this.handleRoomChange} placeholder="Room Name" />
-                    <div id="checkbox-container">
-                        <input onChange={this.handleDayChange} type="checkbox" name="weekday" id="monday" value="Mon" />
-                        <label htmlFor="monday">Monday</label>
-                        <input onChange={this.handleDayChange} type="checkbox" name="weekday" id="tuesday" value="Tue" />
-                        <label htmlFor="tuesday">Tuesday</label>
-                        <input onChange={this.handleDayChange} type="checkbox" name="weekday" id="wednesday" value="Wed" />
-                        <label htmlFor="wednesday">Wednesday</label>
-                        <input onChange={this.handleDayChange} type="checkbox" name="weekday" id="thursday" value="Thu" />
-                        <label htmlFor="thursday">Thursday</label>
-                        <input onChange={this.handleDayChange} type="checkbox" name="weekday" id="friday" value="Fri" />
-                        <label htmlFor="friday">Friday</label>
+                    <input type="text" onChange={this.handleRoomChange} placeholder="Room Name" />          
+                    <div id="create-enrichment-choose-time">
+                        <p>
+                            This Enrichment is...
+                        </p>
+                        <div>
+                            <input onChange={this.handleTimeChoiceChange} checked={this.state.isSingleDay} type="radio" name="time-choice" id="single-day" value="single-day"/>
+                            <label for="single-day">One Day</label>
+                        </div>
+                        <div>
+                            <input onChange={this.handleTimeChoiceChange} checked={!this.state.isSingleDay} type="radio" name="time-choice" id="recurring" value="recurring"/>
+                            <label for="recurring">Recurring</label>
+                        </div>
                     </div>
-                    </form>
+                    <div id="create-enrichment-time">
+                        {(this.state.isSingleDay) ? 
+                            <div id="single-day-container">
+                            <p>
+                                Active on the following day:
+                            </p>
+                            <input onChange={this.handleDateChange} type="date" value={getHTMLFormattedDate(new Date())}></input>
+                            </div>
+                        :
+                            <div id="weekdays-container">
+                                <p>
+                                    Operates on the following weekdays:
+                                </p>
+                                <div>
+                                    <input onChange={this.handleDayChange} type="checkbox" name="weekday" id="monday" value="Mon" />
+                                    <label htmlFor="monday">Monday</label>
+                                </div>
+                                <div>
+                                    <input onChange={this.handleDayChange} type="checkbox" name="weekday" id="tuesday" value="Tue" />
+                                    <label htmlFor="tuesday">Tuesday</label>
+                                </div>
+                                <div>
+                                    <input onChange={this.handleDayChange} type="checkbox" name="weekday" id="wednesday" value="Wed" />
+                                    <label htmlFor="wednesday">Wednesday</label>
+                                </div>
+                                <div>
+                                    <input onChange={this.handleDayChange} type="checkbox" name="weekday" id="thursday" value="Thu" />
+                                    <label htmlFor="thursday">Thursday</label>
+                                </div>
+                                <div>
+                                    <input onChange={this.handleDayChange} type="checkbox" name="weekday" id="friday" value="Fri" />
+                                    <label htmlFor="friday">Friday</label>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <button>Submit Enrichment</button>
+                </form>
                 <div id="create-enrichment-preview">
                     <EnrichBlock
                         name={(this.state.eName === "") ? placeholder.name : this.state.eName}
                         description={(this.state.eDesc === "") ? placeholder.description : this.state.eDesc}
-                        weekdays={(this.state.eWeekdays === "") ? placeholder.weekdays : this.state.eWeekdays}
+                        weekdays={(this.state.eWeekdays === "") ? ((this.state.isSingleDay) ? placeholder.weekdaySingle : placeholder.weekdayRecur) : this.state.eWeekdays}
                         host={(this.state.eHost === "") ? placeholder.host : this.state.eHost}
                         roomName={(this.state.eRoom === "") ? placeholder.roomName : this.state.eRoom}
                     />
