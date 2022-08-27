@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import "./EnrichBlock.css";
 
 /* Max length of Enrichment description comment before truncation. */
-const maxDescriptionLength = 200;
+var maxDescriptionLength = 250;
 
 export class EnrichBlock extends Component {
   render() {
@@ -13,7 +13,7 @@ export class EnrichBlock extends Component {
         <div id="enrichment-block">
           <h2 id="enrichment-title">
             {this.props.name} <br id="enrichment-add-info-break" />
-            <span id="enrichment-add-info">{this.props.weekdays}</span>
+            <span id="enrichment-add-info">{this.props.weekdayStr}</span>
           </h2>
           <p id="enrichment-description">{this.props.description.length > maxDescriptionLength ? this.props.description.substring(0, 200).trim() + "..." : this.props.description}</p>
           <p id="enrichment-about">

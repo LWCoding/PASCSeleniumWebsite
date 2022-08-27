@@ -34,12 +34,27 @@ a:hover {
     color: var(--orange-alt);
 }
 
+input[type="text"], input[type="date"], textarea, button {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; /* Default font from root. */
+    font-size: 0.9em;
+    padding: 0.2em;
+}
+
 .mobile {
     display: none;
+}
+
+.not-mobile-inline {
+    display: inline;
 }
 
 @media only screen and (max-width: 500px) {
     .mobile {
         display: block !important;
+    }
+    .not-mobile-inline {
+        display: none !important;
     }
 }

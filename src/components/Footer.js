@@ -15,8 +15,9 @@ function Footer() {
           <span>Phone Number: (773) 534-0034</span>
         </div>
         <div id="footer-contents-right">
-        <Link to="/create">Create an Enrichment</Link><br />
-          <span>Created by Lucas Wang, PASC 2022</span>
+        <Link to="/schedule">My Schedule</Link><br />
+        <Link className="not-mobile-inline" to="/create">Create an Enrichment</Link><br />
+        <span><span className="not-mobile-inline">Created by Lucas Wang, </span>PASC 2022</span>
         </div>
       </div>
     </div>

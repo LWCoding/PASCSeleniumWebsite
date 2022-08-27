@@ -10,12 +10,7 @@
 }
 
 #create-enrichment-form input[type="text"], #create-enrichment-form input[type="date"], #create-enrichment textarea {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; /* Default font from root. */
-    width: 50ch;
-    font-size: 0.9em;
-    padding: 0.2em;
+    width: 100%;
 }
 
 #create-enrichment-form p {
@@ -41,10 +36,6 @@
     margin-top: 10px;
 }
 
-#single-day-container {
-
-}
-
 #weekdays-container {
     display: flex;
     flex-direction: column;
@@ -54,7 +45,7 @@
     margin: 5px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
     #create-enrichment {
         flex-direction: column;
         align-items: center;
