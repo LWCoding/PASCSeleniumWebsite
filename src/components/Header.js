@@ -2,6 +2,8 @@
 import wpcpLogo from "../img/wpcp_logo.png";
 // CSS
 import "./Header.css";
+// React
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -9,7 +11,9 @@ function Header() {
       <div id="banner">
         <div id="header-design" />
         <div id="header-design-corner" />
-        <img id="logo" onClick={() => { window.location.href = '/'; }} src={wpcpLogo} alt="School emblem" />
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <img id="logo" src={wpcpLogo} alt="School emblem" />
+        </Link>
         <div id="school-text">
           <h2>Walter Payton College Prep</h2>
           <h1>Selenium Enrichment Website</h1>

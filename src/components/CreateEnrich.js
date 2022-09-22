@@ -47,7 +47,8 @@ export class CreateEnrich extends Component {
             isSingleDay: true,
             singleDay: getHTMLFormattedDate(Date.now())
         }
-    }    handleNameChange = (e) => {
+    }    
+    handleNameChange = (e) => {
         this.setState({ eName: e.target.value });
     };
     /*

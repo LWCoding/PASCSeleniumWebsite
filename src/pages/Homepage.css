@@ -1,0 +1,11 @@
+#block-container {
+    display: flex;
+    width: 100vw;
+    max-width: 1600px;
+    margin: auto;
+    padding: 1em;
+}
+
+#block-container > * {
+    margin: 0 0.8em;
+}
