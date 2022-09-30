@@ -58,6 +58,10 @@ input[type="text"], input[type="date"], textarea, button {
     flex-direction: column;
 }
 
+.content {
+    padding: 1em;
+}
+
 .spacer-md {
     width: 16px;
     height: 16px;

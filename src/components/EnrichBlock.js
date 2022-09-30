@@ -26,7 +26,7 @@ export class EnrichBlock extends Component {
             {this.props.name} <br id="enrichment-add-info-break" />
             <span id="enrichment-add-info">{this.props.weekdayStr}</span>
           </h2>
-          <p id="enrichment-description">{this.props.description.length > maxDescriptionLength ? this.props.description.substring(0, 200).trim() + "..." : this.props.description}</p>
+          <p id="enrichment-description">{this.props.descOverride ? <i>{this.props.descOverride}</i> : this.props.description.length > maxDescriptionLength ? this.props.description.substring(0, 200).trim() + "..." : this.props.description}</p>
           <p id="enrichment-about">
             Enrichment led by {this.props.host} in {this.props.roomName}.
           </p>

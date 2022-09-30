@@ -1,0 +1,9 @@
+#header-div {
+    background-color: white;
+    width: calc(100vw - 60px);
+    padding: 0.2em 1em;
+    font-size: 1.5em;
+    text-align: center;
+    border-left: 60px solid var(--blue);
+    border-right: 60px solid var(--orange);
+}

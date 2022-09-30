@@ -22,8 +22,9 @@ var placeholder = {
     Formats the provided date to MM/DD/YYYY.
 */
 function getFormattedDate(date) {
-    let d = new Date();
-    return `${d.getMonth() + 1}/${(d.getDate() + 1).toString().padStart(2, '0')}/${d.getFullYear()}`
+    let d = new Date(date);
+    d.setDate(d.getDate() + 1)
+    return `${d.getMonth() + 1}/${d.getDate().toString().padStart(2, '0')}/${d.getFullYear()}`
 }
 
 /*
@@ -31,7 +32,8 @@ function getFormattedDate(date) {
 */
 function getHTMLFormattedDate(date) {
     let d = new Date(date);
-    return `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}-${(d.getDate() + 1).toString().padStart(2, '0')}`
+    d.setDate(d.getDate() + 1)
+    return `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')}`
 }
 
 export class CreateEnrich extends Component {
@@ -93,8 +95,11 @@ export class CreateEnrich extends Component {
         This function is run when the date for Single Day enrichments are changed.
     */
     handleDateChange = (e) => {
-        alert(getHTMLFormattedDate(e.target.value));
-        this.setState({ singleDay: getHTMLFormattedDate(e.target.value) })
+        let formattedDate = getHTMLFormattedDate(e.target.value);
+        if (formattedDate.substring(0, 3) === "NaN") {
+            return;
+        }
+        this.setState({ singleDay: formattedDate })
     }
     /*
         This function is run when the One Day or Recurring checkbox is clicked.

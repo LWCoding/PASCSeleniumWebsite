@@ -70,17 +70,18 @@
     height: 20px;
 }
 
-@media only screen and (max-width: 1281px) {
+@media only screen and (max-width: 1280px) {
     #header-design, #header-design-corner {
         display: none;
     }
 }
 
 @media only screen and (max-width: 767px) {
-    #header h1 :not(.mobile) {
-        font-size: 1.6em;
+    #h1-not-mobile {
+        font-size: 1.48em !important;
+        color: red;
     }
-    #header h2 :not(.mobile) {
+    #h2-not-mobile {
         font-size: 1.2em;
     }
 }

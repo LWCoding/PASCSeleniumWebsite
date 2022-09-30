@@ -15,8 +15,8 @@ function Header() {
           <img id="logo" src={wpcpLogo} alt="School emblem" />
         </Link>
         <div id="school-text">
-          <h2>Walter Payton College Prep</h2>
-          <h1>Selenium Enrichment Website</h1>
+          <h2 id="h2-not-mobile">Walter Payton College Prep</h2>
+          <h1 id="h1-not-mobile">Selenium Enrichment Website</h1>
           <h2 className="mobile">WPCP</h2>
           <h1 className="mobile">Selenium</h1>
         </div>

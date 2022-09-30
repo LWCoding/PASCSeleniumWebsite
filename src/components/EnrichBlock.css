@@ -39,7 +39,7 @@
     display: none;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 612px) {
     #enrichment-add-info-break {
         display: block;
     }

@@ -7,6 +7,7 @@
     padding: 1em;
     height: 100%;
     color: black;
+    border-top: 8px solid var(--blue);
 }
 
 #big-content-block:hover {

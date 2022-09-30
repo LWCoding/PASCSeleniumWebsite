@@ -10,7 +10,9 @@ export class MySchedule extends Component {
     return (
         <div>
             <Header />
-            <Schedule />
+            <div className="content">
+              <Schedule />
+            </div>
             <Footer />
         </div>
     )
