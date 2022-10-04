@@ -7,11 +7,14 @@ import HeaderBlock from './HeaderBlock.js';
 // CSS
 import './Schedule.css';
 
+// Number of enrichments to show.
+const numEnrichments = 7;
+
 /*
     Formats the provided date to MM/DD/YYYY (DAY).
 */
 function getFormattedDate(date) {
-  const weekdays = ["Weekend", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Weekend"]
+  const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   let d = new Date(date);
   return `${d.getMonth() + 1}/${d.getDate().toString()}/${d.getFullYear()} (${weekdays[d.getDay()]})`
 }
@@ -23,7 +26,7 @@ export class Schedule extends Component {
     // Run seven days worth of enrichments.
     // This loop should check if the user is currently signed 
     // up for an enrichment on the day that is being checked.
-    for (var i = 0; i < 7; i++) {
+    for (var i = 0; i < numEnrichments; i++) {
       var currDate = new Date(Date.now()); // Point of ref.
       currDate.setDate(currDate.getDate() + i);
       // Check if the day is a weekend.
@@ -55,7 +58,7 @@ export class Schedule extends Component {
             roomName={e.roomName}
           />
         </div> :
-        <DateDivider date={getFormattedDate(currDate)} color="var(--blue-alt)" />
+        <DateDivider date={getFormattedDate(currDate)} color="var(--orange)" />
       );
     }
   }
