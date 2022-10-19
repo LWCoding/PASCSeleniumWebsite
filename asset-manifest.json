@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/app/static/css/main.e6f442ad.css",
+    "main.js": "/app/static/js/main.d9e67095.js",
+    "static/js/787.150375a9.chunk.js": "/app/static/js/787.150375a9.chunk.js",
+    "static/media/wpcp_logo.png": "/app/static/media/wpcp_logo.b08585da36dd2cf043c0.png",
+    "static/media/calendar.png": "/app/static/media/calendar.fe462e7965b4639f0a28.png",
+    "static/media/close_btn.png": "/app/static/media/close_btn.8c03d7b492c00bcce997.png",
+    "static/media/avatar.jfif": "/app/static/media/avatar.f4eb2a3e60816c38ad88.jfif",
+    "static/media/magnifying.jfif": "/app/static/media/magnifying.719a777dc8312250896e.jfif",
+    "index.html": "/app/index.html",
+    "main.e6f442ad.css.map": "/app/static/css/main.e6f442ad.css.map",
+    "main.d9e67095.js.map": "/app/static/js/main.d9e67095.js.map",
+    "787.150375a9.chunk.js.map": "/app/static/js/787.150375a9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6f442ad.css",
+    "static/js/main.d9e67095.js"
+  ]
+}
