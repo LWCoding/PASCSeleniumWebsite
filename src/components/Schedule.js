@@ -35,19 +35,20 @@ export class Schedule extends Component {
       // TODO: Make this find the enrichment
       // the user is currently signed up to.
       var e = {
-        name: "Minecraft Club",
+        name: "NO CLUB SELECTED",
         description:
-          "Want to destress from homework, or just have some fun playing with friends? Minecraft Club is a community for everybody to relax and hang out in.\n\nBoth Java Edition and Bedrock Edition Minecraft players are of course welcome to join.",
-        host: "Chris Deng",
-        roomName: "Room 305",
-        weekdayStr: "Repeats every Fri"
+          "Please select a club for this day.",
+        host: "Admin",
+        roomName: "Main Office",
+        weekdayStr: "Mon Tue Wed Thu Fri"
       }
       // Push either the selected enrichment OR an
       // empty template enrichment.
+      // TODO: Make all keys unique!!!
       this.enrichments.push(
         (!isWeekend) ? 
         <div>
-          <DateDivider date={getFormattedDate(currDate)} />
+          <DateDivider key={i} date={getFormattedDate(currDate)} />
           <EnrichBlock
             key={i}
             name={e.name}
@@ -58,7 +59,7 @@ export class Schedule extends Component {
             roomName={e.roomName}
           />
         </div> :
-        <DateDivider date={getFormattedDate(currDate)} color="var(--orange)" />
+        <DateDivider key={i} date={getFormattedDate(currDate)} color="var(--orange)" />
       );
     }
   }

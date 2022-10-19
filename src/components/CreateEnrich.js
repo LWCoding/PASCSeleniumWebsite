@@ -134,7 +134,36 @@ export class CreateEnrich extends Component {
         if (newEnrichment.roomName === "") {
             errorMessage += "Invalid room name provided\n";
         }
-        console.log(errorMessage === "" ? newEnrichment : errorMessage);
+        if (errorMessage !== "") {
+            console.log(errorMessage);
+            alert(errorMessage);
+            return;
+        }
+        // TODO: Change localhost link!
+        fetch("http://localhost:3000/create-enrichment", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: newEnrichment.name,
+                description: newEnrichment.description,
+                hostName: newEnrichment.host,
+                roomName: newEnrichment.roomName,
+                repeats: this.state.isSingleDay,
+                singleDay: new Date(this.state.singleDay),
+                repeatDays: (this.state.eWeekdays) ? this.state.eWeekdays.split(" ").map(s => {
+                    return { day: s }
+                }) : []
+            })
+        }).then((res) => {
+            console.log(`Returned status ${res.status}.`);
+            if (res.ok) {
+                alert("Successfully submitted Enrichment request! Since the website is in BETA, it has been automatically added.");
+            } else {
+                alert("Something went wrong when trying to submit your Enrichment request! Try again later.");
+            }
+        })
     }
     render() {
         return (

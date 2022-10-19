@@ -13,7 +13,7 @@ export class Announcement extends Component {
     }
     render() {
         return (
-            <div class="announcement">
+            <div className="announcement">
                 <h3>{this.props.name}</h3>
                 <p>{this.props.desc}</p>
             </div>
