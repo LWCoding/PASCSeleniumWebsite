@@ -1,4 +1,4 @@
-#modal-bg {
+.modal-bg {
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -9,7 +9,7 @@
     z-index: 98;
 }
 
-#modal-close-btn {
+.modal-close-btn {
     width: 28px;
     height: 28px;
     position: absolute;
@@ -19,12 +19,12 @@
     right: 14px;
 }
 
-#modal-close-btn:hover {
+.modal-close-btn:hover {
     background-color: rgb(226, 226, 226);
     cursor: pointer;
 }
 
-#modal {
+.modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -37,6 +37,13 @@
     z-index: 99;
 }
 
-#modal-name {
+.modal-select {
+    margin-top: 10px;
+    padding-right: 2em;
+    margin-bottom: 8px;
+}
+
+.modal-name {
+    margin-top: 2px;
     margin-bottom: 8px;
 }

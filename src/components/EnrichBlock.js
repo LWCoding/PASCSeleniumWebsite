@@ -22,7 +22,7 @@ function EnrichBlock(props) {
           Enrichment led by {props.host} in {props.roomName}.
         </p>
       </div>
-      {isOpen && <Modal name={props.name} desc={props.description} setIsOpen={setIsOpen} />}
+      {isOpen && <Modal name={props.name} desc={props.description} setIsOpen={setIsOpen} allowEnrichmentChange={true} />}
     </div>
   );
 };
