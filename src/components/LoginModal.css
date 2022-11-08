@@ -27,7 +27,11 @@
     align-items: center;
     width: 400px;
     margin: auto;
-    padding: 1.2em;
+    padding: 0 1.2em;
     text-align: center;
     background-color: white;
+}
+
+#not-logged-in>p {
+    padding: 8px;
 }

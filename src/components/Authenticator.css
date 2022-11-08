@@ -4,4 +4,12 @@
     margin-top: 0.4em;
     padding: 0.5em;
     background-color: var(--blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-box>* {
+    flex: 1;
+    flex-grow: inherit;
 }
