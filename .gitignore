@@ -20,4 +20,4 @@ yarn-debug.log*
 yarn-error.log*
 
 /config
-/api
+/heroku-build

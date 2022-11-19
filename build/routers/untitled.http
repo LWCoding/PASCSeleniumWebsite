@@ -1,0 +1,10 @@
+POST http://localhost:3000/create-enrichment
+Content-Type: application/json
+
+{
+    "name": "Selenium's Enrichment",
+    "repeats": false,
+    "hostName": "Selenium",
+    "roomName": "107-LIB",
+    "singleDay": "10/7/2022"
+}
