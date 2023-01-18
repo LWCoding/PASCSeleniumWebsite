@@ -13,7 +13,7 @@ export class LoginModal extends Component {
                 <div id="login-modal">
                     <div id="not-logged-in">
                         <h2>You're Not Logged In!</h2>
-                        <p>In order to use Selenium, please log into your school-provided CPS email:</p>
+                        <p>In order to use Selenium, please choose to register or login (as I'm too broke to use Google auth):</p>
                         <Authenticator />
                     </div>
                 </div>

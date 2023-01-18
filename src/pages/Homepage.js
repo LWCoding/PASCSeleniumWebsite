@@ -18,7 +18,7 @@ export class Homepage extends Component {
   constructor() {
     super()
     this.state = {
-      loggedIn: true
+      loggedIn: false
     }
   }
   render() {
