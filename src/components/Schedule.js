@@ -1,7 +1,7 @@
 // REACT
 import React, { Component } from 'react';
 // Components
-import EnrichBlock from './EnrichBlock.js';
+import EnrichBlock from './enrichments/EnrichBlock.js';
 import DateDivider from './DateDivider.js';
 import HeaderBlock from './HeaderBlock.js';
 // CSS

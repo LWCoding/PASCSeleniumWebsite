@@ -8,7 +8,7 @@ import Footer from "../components/Footer.js";
 import BigContentBlock from "../components/BigContentBlock.js";
 import ContentBlock from "../components/ContentBlock.js";
 import Announcement from "../components/Announcement.js";
-import LoginModal from "../components/LoginModal.js";
+import LoginModal from "../components/authentication/LoginModal.js";
 // IMAGES
 import CalendarImg from "../img/calendar.png";
 import AvatarImg from "../img/avatar.jfif";

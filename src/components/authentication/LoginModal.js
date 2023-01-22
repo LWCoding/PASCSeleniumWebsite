@@ -1,9 +1,9 @@
 // REACT
-import React, { Component } from 'react'
+import React, { Component } from "react";
 // CSS
 import "./LoginModal.css";
 // COMPONENTS
-import Authenticator from "../components/Authenticator.js";
+import Authenticator from "./Authenticator.js";
 
 export class LoginModal extends Component {
     render() {
@@ -13,13 +13,16 @@ export class LoginModal extends Component {
                 <div id="login-modal">
                     <div id="not-logged-in">
                         <h2>You're Not Logged In!</h2>
-                        <p>In order to use Selenium, please choose to register or login (as I'm too broke to use Google auth):</p>
+                        <p>
+                            In order to use Selenium, please choose to register
+                            or login (as I'm too broke to use Google auth):
+                        </p>
                         <Authenticator />
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default LoginModal
+export default LoginModal;

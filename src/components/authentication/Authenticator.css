@@ -1,0 +1,38 @@
+.auth-box {
+    width: 250px;
+    min-height: 160px;
+    margin-top: 0.4em;
+    padding: 0.2em;
+    background-color: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-box>* {
+    flex: 1;
+    flex-grow: inherit;
+}
+
+.switch-form-type {
+    background: none;
+    border: none;
+    color: var(--orange);
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+.switch-form-type:hover {
+    cursor: pointer;
+    color: var(--orange-alt);
+}
+
+#login-auth input,
+#login-auth button {
+    min-width: 200px;
+}
+
+#register-auth input,
+#register-auth button {
+    min-width: 200px;
+}

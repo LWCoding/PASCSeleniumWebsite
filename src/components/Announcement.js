@@ -1,15 +1,15 @@
 // REACT
-import React, { Component } from 'react'
+import React, { Component } from "react";
 // CSS
-import './Announcement.css';
+import "./Announcement.css";
 
 export class Announcement extends Component {
     constructor(props) {
         super(props);
         this.state = {
             name: props.name,
-            desc: props.desc
-        }
+            desc: props.desc,
+        };
     }
     render() {
         return (
@@ -17,8 +17,8 @@ export class Announcement extends Component {
                 <h3>{this.props.name}</h3>
                 <p>{this.props.desc}</p>
             </div>
-        )
+        );
     }
 }
 
-export default Announcement
+export default Announcement;

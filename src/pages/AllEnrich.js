@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 // COMPONENTS
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
-import EnrichList from '../components/EnrichList.js';
+import EnrichList from '../components/enrichments/EnrichList.js';
 
 export class Homepage extends Component {
   render() {

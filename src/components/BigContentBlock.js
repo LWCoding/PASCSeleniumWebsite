@@ -1,8 +1,8 @@
 // CSS
-import './BigContentBlock.css';
+import "./BigContentBlock.css";
 // REACT
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class ContentBlock extends Component {
     constructor(props) {
@@ -12,9 +12,9 @@ export class ContentBlock extends Component {
             subname: props.subname,
             desc: props.desc,
             image: props.image,
-            linkTo: props.linkTo
-        }
-    }    
+            linkTo: props.linkTo,
+        };
+    }
     render() {
         return (
             <Link to={this.props.linkTo} style={{ textDecoration: "none" }}>
@@ -27,8 +27,8 @@ export class ContentBlock extends Component {
                     </div>
                 </div>
             </Link>
-        )
+        );
     }
 }
 
-export default ContentBlock
+export default ContentBlock;

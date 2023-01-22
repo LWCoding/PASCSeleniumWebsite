@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 // CSS
-import './HeaderBlock.css';
+import "./HeaderBlock.css";
 
 export class HeaderBlock extends Component {
     render() {
@@ -8,8 +8,8 @@ export class HeaderBlock extends Component {
             <div id="header-div">
                 <h3>{this.props.text}</h3>
             </div>
-        )
+        );
     }
 }
 
-export default HeaderBlock
+export default HeaderBlock;
