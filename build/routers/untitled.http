@@ -1,10 +1,47 @@
-POST http://localhost:3000/create-enrichment
-Content-Type: application/json
+# POST http://localhost:3000/create-enrichment
+# Content-Type: application/json
 
-{
-    "name": "Selenium's Enrichment",
-    "repeats": false,
-    "hostName": "Selenium",
-    "roomName": "107-LIB",
-    "singleDay": "10/7/2022"
-}
+# {
+#     "name": "Selenium's Enrichment",
+#     "repeats": false,
+#     "hostName": "Selenium",
+#     "roomName": "107-LIB",
+#     "singleDay": "10/7/2022"
+# }
+
+# POST http://localhost:3000/register
+# Content-Type: application/json
+
+# {
+#     "username": "Skylarenium2",
+#     "password": "LeDiamondMob01"
+# }
+
+# POST http://localhost:3000/login
+# Content-Type: application/json
+
+# {
+#     "username": "Skylarenium",
+#     "password": "LeDiamondMob01"
+# }
+
+# PATCH http://localhost:3000/register-enrichment
+# Content-Type: application/json
+
+# {
+#     "user": {
+#         "username": "Skylarenium2",
+#         "password": "LeDiamondMob01"
+#     },
+#     "enrichmentName": "Ritvik's Fun Place"
+# }
+
+# GET http://localhost:3000/get-enrichments
+# Content-Type: application/json
+
+# {
+#     "user": {
+#         "username": "Skylarenium2",
+#         "password": "LeDiamondMob01"
+#     }
+# }
