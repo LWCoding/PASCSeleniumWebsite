@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
 
 const userSchema = mongoose.Schema({
 	username: {
@@ -7,6 +8,10 @@ const userSchema = mongoose.Schema({
 		unique: true,
 	},
 	password: {
+		type: String,
+		required: true,
+	},
+	token: {
 		type: String,
 		required: true,
 	},
@@ -30,6 +35,17 @@ userSchema.methods.toJSON = function () {
 	delete user.__v;
 	delete user._id;
 	return user;
+};
+
+userSchema.methods.generateAuthToken = async function () {
+	const token = jwt.sign(
+		{ _id: this._id.toString() },
+		process.env.JWT_SECRET,
+		{ expiresIn: "7 days" }
+	);
+	this.token = token;
+	await this.save();
+	return token;
 };
 
 const userModel = mongoose.model("User", userSchema);

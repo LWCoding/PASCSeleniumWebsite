@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const path = require("path");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 
 // Connect to Mongo database
 mongoose.connect(process.env.DATABASE_URL).then(() => {
@@ -14,6 +16,24 @@ app.use(cors());
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "/")));
+
+// Create express-session for cookies
+app.use(
+	session({
+		secret: process.env.SESSION_SECRET,
+		resave: true,
+		saveUninitialized: true,
+		store: MongoStore.create({
+			db: session,
+			mongoUrl: process.env.DATABASE_URL,
+		}),
+		cookie: {
+			httpOnly: true,
+			secure: false,
+			sameSite: "lax",
+		},
+	})
+);
 
 // Connect routers
 const enrichmentRouter = require("./routers/enrichments.js");

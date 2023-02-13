@@ -13,7 +13,7 @@
 # Content-Type: application/json
 
 # {
-#     "username": "Skylarenium2",
+#     "username": "Skylarenium4",
 #     "password": "LeDiamondMob01"
 # }
 
@@ -21,7 +21,7 @@
 # Content-Type: application/json
 
 # {
-#     "username": "Skylarenium",
+#     "username": "Skylarenium4",
 #     "password": "LeDiamondMob01"
 # }
 
@@ -30,9 +30,10 @@
 
 # {
 #     "user": {
-#         "username": "Skylarenium2",
+#         "username": "Skylarenium4",
 #         "password": "LeDiamondMob01"
 #     },
+#     "date": "02/13/2023",
 #     "enrichmentName": "Ritvik's Fun Place"
 # }
 
@@ -41,7 +42,14 @@
 
 # {
 #     "user": {
-#         "username": "Skylarenium2",
+#         "username": "Skylarenium3",
 #         "password": "LeDiamondMob01"
 #     }
 # }
+
+POST http://localhost:3000/retrieve
+Content-Type: application/json
+
+{
+
+}
