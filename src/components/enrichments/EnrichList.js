@@ -11,37 +11,37 @@ import "./EnrichList.css";
 */
 
 const EnrichContainer = () => {
-    const [enrich, loadEnrich] = useState([]);
+	const [enrich, loadEnrich] = useState([]);
 
-    useEffect(() => {
-        // TODO: Change this to become a database link!
-        fetch("http://localhost:3000/get-all-enrichments")
-            .then((res) => {
-                return res.json();
-            })
-            .then((json) => {
-                loadEnrich(json.enrichments);
-            });
-    }, []);
+	useEffect(() => {
+		fetch("http://localhost:3000/get-all-enrichments")
+			.then((res) => {
+				return res.json();
+			})
+			.then((json) => {
+				loadEnrich(json.enrichments);
+			});
+	}, []);
 
-    // Call while there's no enrichments loaded
-    if (!enrich) return <div id="enrichment-container">Loading...</div>;
+	// Call while there's no enrichments loaded
+	if (!enrich) return <div id="enrichment-container">Loading...</div>;
 
-    let i = 0; // For counting keys
-    return (
-        <div id="enrichment-container">
-            {enrich.map((e) => (
-                <EnrichBlock
-                    key={i++}
-                    name={e.name}
-                    description={e.description}
-                    weekdayStr={e.weekdayStr}
-                    host={e.hostName}
-                    roomName={e.roomName}
-                />
-            ))}
-        </div>
-    );
+	let i = 0; // For counting keys
+	return (
+		<div id="enrichment-container">
+			{enrich.map((e) => (
+				<EnrichBlock
+					key={i++}
+					name={e.name}
+					description={e.description}
+					date={e.date}
+					weekdayStr={e.weekdayStr}
+					host={e.hostName}
+					roomName={e.roomName}
+				/>
+			))}
+		</div>
+	);
 };
 
 export default EnrichContainer;

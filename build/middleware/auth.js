@@ -13,7 +13,7 @@ const auth = async (req, res, next) => {
 		req.session.user = user;
 		next();
 	} catch (error) {
-		return res.status(401).redirect("/login");
+		return res.status(401);
 	}
 };
 

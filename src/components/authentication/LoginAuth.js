@@ -25,6 +25,7 @@ export default class LoginAuth extends Component {
 		e.preventDefault();
 		fetch("http://localhost:3000/login", {
 			method: "POST",
+			credentials: "include",
 			body: JSON.stringify({
 				username: this.state.username,
 				password: this.state.password,
@@ -34,6 +35,9 @@ export default class LoginAuth extends Component {
 			},
 		})
 			.then((res) => {
+				if (res.status == 200) {
+					window.location.reload();
+				}
 				return res.json();
 			})
 			.then((json) => {

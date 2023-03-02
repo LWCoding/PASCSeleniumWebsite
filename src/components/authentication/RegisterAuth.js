@@ -26,6 +26,7 @@ export default class RegisterAuth extends Component {
 		e.preventDefault();
 		fetch("http://localhost:3000/register", {
 			method: "POST",
+			credentials: "include",
 			body: JSON.stringify({
 				username: this.state.username,
 				password: this.state.password,
@@ -36,6 +37,9 @@ export default class RegisterAuth extends Component {
 			},
 		})
 			.then((res) => {
+				if (res.status == 200) {
+					window.location.reload();
+				}
 				return res.json();
 			})
 			.then((json) => {

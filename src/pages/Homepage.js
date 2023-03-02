@@ -21,6 +21,21 @@ export class Homepage extends Component {
 			loggedIn: true,
 		};
 	}
+	// Try to see if the user has login credentials, and
+	// log them in if so.
+	componentDidMount() {
+		fetch("http://localhost:3000/retrieve", {
+			method: "POST",
+			credentials: "include",
+		})
+			.then((res) => {
+				this.setState({ loggedIn: res.ok });
+				return res.json();
+			})
+			.then((json) => {
+				console.log(json);
+			});
+	}
 	render() {
 		return (
 			<div>

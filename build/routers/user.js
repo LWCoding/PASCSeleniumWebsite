@@ -55,7 +55,8 @@ userRouter.post("/login", detectXSS, async (req, res) => {
 	req.session.cookie.expires = cookieExpiryDate;
 	const token = await preexistingUser.generateAuthToken();
 	req.session.token = token;
-	return res.status(200).send();
+	await req.session.save();
+	return res.status(200).send({});
 });
 
 userRouter.post("/retrieve", async (req, res) => {
@@ -68,39 +69,13 @@ userRouter.post("/retrieve", async (req, res) => {
 	if (!user) {
 		return res.status(400).send({ error: "Not authenticated." });
 	}
-	return res.status(200).send(req.session.user);
+	return res.status(200).send({ user: req.session.user });
 });
 
-// userRouter.post("/register", async (req, res) => {
-// 	try {
-// 		const hash = await bcrypt.hash(req.body.password, 10);
-// 		const user = new User({ username: req.body.username, password: hash });
-// 		await user.save();
-// 		res.status(201).json({ message: "User created", user: user });
-// 	} catch (err) {
-// 		console.log(err);
-// 		res.status(500).json({ error: err });
-// 	}
-// });
-
-// userRouter.post("/login", async (req, res) => {
-// 	try {
-// 		const user = await User.findOne({ username: req.body.username });
-// 		if (!user) {
-// 			return res.status(401).json({ message: "Auth failed" });
-// 		}
-// 		const result = await bcrypt.compare(req.body.password, user.password);
-// 		if (result) {
-// 			return res
-// 				.status(200)
-// 				.json({ message: "Auth successful", user: user });
-// 		}
-// 		return res.status(401).json({ message: "Auth failed" });
-// 	} catch (err) {
-// 		console.log(err);
-// 		res.status(500).json({ error: err });
-// 	}
-// });
+userRouter.post("/logout", async (req, res) => {
+	req.session = null; // Deletes the cookie.
+	return res.status(200).send({});
+});
 
 // Must provide: enrichmentName, date
 userRouter.patch("/register-enrichment", auth, async (req, res) => {
@@ -114,11 +89,11 @@ userRouter.patch("/register-enrichment", auth, async (req, res) => {
 		if (!req.body.date) {
 			throw new Error("No date provided!");
 		}
-		req.user.enrichments.push({
+		req.session.user.enrichments.push({
 			enrichmentId: enrichment._id,
 			date: req.body.date,
 		});
-		await req.user.save();
+		await req.session.user.save();
 		return res.status(200).send({ user: req.user });
 	} catch (err) {
 		console.log(err);
@@ -129,6 +104,7 @@ userRouter.patch("/register-enrichment", auth, async (req, res) => {
 userRouter.get("/get-enrichments", auth, async (req, res) => {
 	try {
 		let populatedUser = await req.user.populate("enrichments.enrichmentId");
+		console.log(populatedUser.enrichments);
 		return res.status(200).send({ enrichments: populatedUser.enrichments });
 	} catch (err) {
 		console.log(err);
