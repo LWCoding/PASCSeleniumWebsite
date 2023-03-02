@@ -72,8 +72,12 @@ userRouter.post("/retrieve", async (req, res) => {
 	return res.status(200).send({ user: req.session.user });
 });
 
-userRouter.post("/logout", async (req, res) => {
-	req.session = null; // Deletes the cookie.
+userRouter.post("/logout", auth, async (req, res) => {
+	req.session.destroy((err) => {
+		if (err) {
+			console.log(err);
+		}
+	});
 	return res.status(200).send({});
 });
 
@@ -89,6 +93,16 @@ userRouter.patch("/register-enrichment", auth, async (req, res) => {
 		if (!req.body.date) {
 			throw new Error("No date provided!");
 		}
+		// Remove duplicate enrichments on the same day.
+		req.session.user.enrichments = req.session.user.enrichments.filter(
+			(e) => {
+				return (
+					new Date(e.date).toDateString() !=
+					new Date(req.body.date).toDateString()
+				);
+			}
+		);
+		// Add tne enrichment on the day!
 		req.session.user.enrichments.push({
 			enrichmentId: enrichment._id,
 			date: req.body.date,
@@ -101,10 +115,12 @@ userRouter.patch("/register-enrichment", auth, async (req, res) => {
 	}
 });
 
-userRouter.get("/get-enrichments", auth, async (req, res) => {
+userRouter.post("/get-enrichments", auth, async (req, res) => {
 	try {
-		let populatedUser = await req.user.populate("enrichments.enrichmentId");
-		console.log(populatedUser.enrichments);
+		let populatedUser = await req.session.user.populate(
+			"enrichments.enrichmentId"
+		);
+		// TODO: Make this return the enrichments so they can be listed out in Schedule.js!
 		return res.status(200).send({ enrichments: populatedUser.enrichments });
 	} catch (err) {
 		console.log(err);
