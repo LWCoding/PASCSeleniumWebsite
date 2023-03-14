@@ -13,7 +13,7 @@ import "./EnrichList.css";
 const EnrichContainer = () => {
 	const [enrich, loadEnrich] = useState([]);
 
-	useEffect(() => {
+	function updateEnrichments() {
 		fetch("http://localhost:3000/get-all-enrichments")
 			.then((res) => {
 				return res.json();
@@ -21,6 +21,10 @@ const EnrichContainer = () => {
 			.then((json) => {
 				loadEnrich(json.enrichments);
 			});
+	}
+
+	useEffect(() => {
+		updateEnrichments();
 	}, []);
 
 	// Call while there's no enrichments loaded
@@ -38,6 +42,7 @@ const EnrichContainer = () => {
 					weekdayStr={e.weekdayStr}
 					host={e.hostName}
 					roomName={e.roomName}
+					updateEnrichments={updateEnrichments}
 				/>
 			))}
 		</div>

@@ -42,6 +42,7 @@ function EnrichBlock(props) {
 					date={props.date}
 					setIsOpen={setIsOpen}
 					allowEnrichmentChange={true}
+					updateEnrichments={props.updateEnrichments}
 				/>
 			)}
 		</div>

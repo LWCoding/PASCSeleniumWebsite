@@ -33,84 +33,93 @@ const Schedule = () => {
 	const [enrichments, loadEnrichments] = useState([]);
 
 	useEffect(() => {
-		var newEnrichmentList = [];
-		// Find the enrichments that the user is signed up for.
-		fetch("http://localhost:3000/get-enrichments", {
-			method: "POST",
-			credentials: "include",
-			headers: {
-				"Content-Type": "application/json",
-			},
-		})
-			.then((res) => {
-				return res.json();
+		// We wrap this inside of a function so child components can call
+		// the function. We pass this function into the EnrichBlock component with the
+		// parameter `updateEnrichments`.
+		function updateEnrichments() {
+			var newEnrichmentList = [];
+			// Find the enrichments that the user is signed up for.
+			fetch("http://localhost:3000/get-enrichments", {
+				method: "POST",
+				credentials: "include",
+				headers: {
+					"Content-Type": "application/json",
+				},
 			})
-			.then((json) => {
-				var enrich = json.enrichments;
-				// Run seven days worth of enrichments.
-				for (var i = 0; i < numEnrichments; i++) {
-					var currDate = new Date(Date.now()); // Point of ref.
-					var currEnrich = undefined; // Enrichment for current day.
-					currDate.setDate(currDate.getDate() + i);
-					// Find the enrichment that the user is registered to
-					// if (one exists) on the same day.
-					for (var j = 0; j < enrich.length; j++) {
-						var e = enrich[j];
-						if (
-							new Date(e.date).toDateString() ===
-							new Date(currDate).toDateString()
-						) {
-							currEnrich = e.enrichmentId;
-							break;
+				.then((res) => {
+					return res.json();
+				})
+				.then((json) => {
+					var enrich = json.enrichments;
+					// Run seven days worth of enrichments.
+					for (var i = 0; i < numEnrichments; i++) {
+						var currDate = new Date(Date.now()); // Point of ref.
+						var currEnrich = undefined; // Enrichment for current day.
+						currDate.setDate(currDate.getDate() + i);
+						// Find the enrichment that the user is registered to
+						// if (one exists) on the same day.
+						for (var j = 0; j < enrich.length; j++) {
+							var e = enrich[j];
+							if (
+								new Date(e.date).toDateString() ===
+								new Date(currDate).toDateString()
+							) {
+								currEnrich = e.enrichmentId;
+								break;
+							}
 						}
-					}
-					// Check if the day is a weekend.
-					// If so, render special HTML.
-					var isWeekend =
-						currDate.getDay() === 0 || currDate.getDay() === 6;
-					// If the enrichment hasn't been chosen on this day, just
-					// render a default enrichment.
-					if (currEnrich == null) {
-						currEnrich = {
-							name: "NO CLUB SELECTED",
-							description: "Please select a club for this day.",
-							host: "Admin",
-							roomName: "Main Office",
-							weekdayStr: "Mon Tue Wed Thu Fri",
-						};
-					}
-					// Push either the selected enrichment OR an
-					// empty template enrichment.
-					newEnrichmentList.push(
-						!isWeekend ? (
-							<div>
+						// Check if the day is a weekend.
+						// If so, render special HTML.
+						var isWeekend =
+							currDate.getDay() === 0 || currDate.getDay() === 6;
+						// If the enrichment hasn't been chosen on this day, just
+						// render a default enrichment.
+						if (currEnrich == null) {
+							currEnrich = {
+								name: "NO CLUB SELECTED",
+								description:
+									"Please select a club for this day.",
+								host: "Admin",
+								roomName: "Main Office",
+								weekdayStr: "Mon Tue Wed Thu Fri",
+							};
+						}
+						// Push either the selected enrichment OR an
+						// empty template enrichment.
+						newEnrichmentList.push(
+							!isWeekend ? (
+								<div>
+									<DateDivider
+										key={i + 9999}
+										date={getFormattedDate(currDate)}
+									/>
+									<EnrichBlock
+										key={i + 999}
+										name={currEnrich.name}
+										description={currEnrich.description}
+										date={currDate}
+										descOverride="Click to view enrichment information."
+										weekdayStr={currEnrich.weekdayStr}
+										host={currEnrich.host}
+										roomName={currEnrich.roomName}
+										updateEnrichments={updateEnrichments}
+									/>
+								</div>
+							) : (
 								<DateDivider
-									key={i + 9999}
+									key={i + 99}
 									date={getFormattedDate(currDate)}
+									color="var(--orange)"
 								/>
-								<EnrichBlock
-									key={i + 999}
-									name={currEnrich.name}
-									description={currEnrich.description}
-									date={currDate}
-									descOverride="Click to view enrichment information."
-									weekdayStr={currEnrich.weekdayStr}
-									host={currEnrich.host}
-									roomName={currEnrich.roomName}
-								/>
-							</div>
-						) : (
-							<DateDivider
-								key={i + 99}
-								date={getFormattedDate(currDate)}
-								color="var(--orange)"
-							/>
-						)
-					);
-				}
-				loadEnrichments(newEnrichmentList);
-			});
+							)
+						);
+					}
+					loadEnrichments(newEnrichmentList);
+				});
+		}
+		updateEnrichments();
 	}, []);
+
 	return (
 		<div id="schedule-block">
 			<HeaderBlock text="My Schedule" />

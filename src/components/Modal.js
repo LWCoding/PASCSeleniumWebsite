@@ -6,16 +6,10 @@ import Select from "react-select";
 // CSS
 import "./Modal.css";
 
-const Modal = ({
-	date,
-	nameInput,
-	descInput,
-	setIsOpen,
-	allowEnrichmentChange,
-}) => {
+const Modal = (props) => {
 	const [enrich, loadEnrich] = useState([]);
-	const [name, setName] = useState(nameInput);
-	const [desc, setDesc] = useState(descInput);
+	const [name, setName] = useState(props.nameInput);
+	const [desc, setDesc] = useState(props.descInput);
 
 	function handleEnrichmentChange(event) {
 		fetch("http://localhost:3000/find-enrichment?name=" + event.value)
@@ -26,6 +20,7 @@ const Modal = ({
 				// Handle if enrichment is selected
 				setName(json.enrichment.name);
 				setDesc(json.enrichment.description);
+				props.updateEnrichments();
 			});
 		fetch("http://localhost:3000/register-enrichment", {
 			method: "PATCH",
@@ -35,7 +30,7 @@ const Modal = ({
 			},
 			body: JSON.stringify({
 				enrichmentName: event.value,
-				date,
+				date: props.date,
 			}),
 		})
 			.then((res) => {
@@ -58,17 +53,17 @@ const Modal = ({
 
 	return (
 		<div>
-			<div className="modal-bg" onClick={() => setIsOpen(false)} />
+			<div className="modal-bg" onClick={() => props.setIsOpen(false)} />
 			<div className="modal">
 				<img
 					src={closeBtn}
 					alt="Close button"
 					className="modal-close-btn"
-					onClick={() => setIsOpen(false)}
+					onClick={() => props.setIsOpen(false)}
 				/>
 				<h2 className="modal-name">{name}</h2>
 				<p className="modal-description">{desc}</p>
-				{allowEnrichmentChange && (
+				{props.allowEnrichmentChange && (
 					<Select
 						className="modal-select"
 						onChange={(e) => handleEnrichmentChange(e)}
