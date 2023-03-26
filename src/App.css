@@ -7,8 +7,8 @@
     --footer-height: 80px;
 }
 
-html {
-    background-color: #ebded6;
+html, body {
+    background-color: #ebded6 !important;
 }
 
 html::-webkit-scrollbar {
@@ -28,24 +28,11 @@ html::-webkit-scrollbar {
 }
 
 a {
-    color: var(--orange);
+    color: var(--orange) !important;
 }
 
 a:hover {
-    color: var(--orange-alt);
-}
-
-input[type="text"],
-input[type="date"],
-input[type="password"],
-textarea,
-button {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-    /* Default font from root. */
-    font-size: 0.9em;
-    padding: 0.2em;
+    color: var(--orange-alt) !important;
 }
 
 .mobile {
@@ -62,10 +49,6 @@ button {
 
 .flex-column {
     flex-direction: column;
-}
-
-.content {
-    padding: 1em;
 }
 
 .spacer-md {

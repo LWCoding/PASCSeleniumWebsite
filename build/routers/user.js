@@ -64,7 +64,12 @@ userRouter.post("/retrieve", async (req, res) => {
 	if (!token) {
 		return res.status(400).send({ error: "Not authenticated." });
 	}
-	const decoded = jwt.verify(token, process.env.JWT_SECRET);
+	var decoded;
+	try {
+		decoded = jwt.verify(token, process.env.JWT_SECRET);
+	} catch (e) {
+		return res.status(400).send({ error: "Not authenticated." });
+	}
 	const user = await User.findOne({ _id: decoded, token });
 	if (!user) {
 		return res.status(400).send({ error: "Not authenticated." });

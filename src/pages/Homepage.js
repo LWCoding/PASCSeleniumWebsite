@@ -1,18 +1,16 @@
-// CSS
-import "./Homepage.css";
 // REACT
 import React, { Component } from "react";
 // COMPONENTS
 import Header from "../components/Header.js";
 import Footer from "../components/Footer.js";
-import BigContentBlock from "../components/BigContentBlock.js";
-import ContentBlock from "../components/ContentBlock.js";
-import Announcement from "../components/Announcement.js";
 import LoginModal from "../components/authentication/LoginModal.js";
+import { Link } from "react-router-dom";
 // IMAGES
-import CalendarImg from "../img/calendar.png";
-import AvatarImg from "../img/avatar.jfif";
-import MagnifyingImg from "../img/magnifying.jfif";
+import CalendarImg from "../img/schedule.png";
+import AvatarImg from "../img/user.png";
+import MagnifyingImg from "../img/search.png";
+// REACT BOOTSTRAP
+import { Alert, Button, Card, CardGroup } from "react-bootstrap";
 
 export class Homepage extends Component {
 	constructor() {
@@ -40,47 +38,100 @@ export class Homepage extends Component {
 		return (
 			<div>
 				<Header />
-				<div className="content">
-					<Announcement
-						name="Announcement:"
-						desc="This webpage is under development. Please refrain from registering Enrichments until further notice."
-					/>
-					{this.state.loggedIn ? (
-						<div>
-							<div className="block-container">
-								<BigContentBlock
-									name="My Schedule"
-									linkTo="/schedule"
-									subname="View and change Enrichments!"
-									desc="Welcome to Selenium! Click to view and change your scheduled Enrichments for the next few days."
-									image={CalendarImg}
-								/>
-								<div
-									id="mobile-flex-override"
-									className="flex-column"
-								>
-									<div className="mobile spacer-md" />
-									<ContentBlock
-										name="My Info"
-										linkTo="/student-info"
-										subname="Shows your information."
-										desc="Locate your ID, change your nickname, or find other stored personal information."
-										image={AvatarImg}
-									/>
-									<div className="spacer-md" />
-									<ContentBlock
-										name="Teacher Locator"
-										linkTo="/teacher-locator"
-										subname="Find a teacher during Enrichment."
-										desc="Find what room a teacher will be in on a specific Enrichment day."
-										image={MagnifyingImg}
-									/>
-								</div>
+				<div className="mx-auto" style={{ maxWidth: "1300px" }}>
+					<Alert className="mx-4 my-2" variant="warning">
+						This webpage is under development. Please refrain from
+						registering Enrichments until further notice.
+					</Alert>
+					<div className="px-4 py-2">
+						{this.state.loggedIn ? (
+							<div>
+								<CardGroup>
+									<Card>
+										<Card.Img
+											className="mx-auto my-3"
+											style={{ maxWidth: "80%" }}
+											variant="top"
+											src={CalendarImg}
+										/>
+										<Card.Body>
+											<Card.Title>My Schedule</Card.Title>
+											<Card.Text>
+												View and change your scheduled
+												Enrichments for the next few
+												days.
+											</Card.Text>
+											<Link
+												to="/schedule"
+												style={{
+													textDecoration: "none",
+												}}
+											>
+												<Button variant="primary">
+													View Enrichments
+												</Button>
+											</Link>
+										</Card.Body>
+									</Card>
+									<Card>
+										<Card.Img
+											className="mx-auto my-3"
+											style={{ maxWidth: "80%" }}
+											variant="top"
+											src={AvatarImg}
+										/>
+										<Card.Body>
+											<Card.Title>My Info</Card.Title>
+											<Card.Text>
+												Locate your ID, change your
+												nickname, or find other stored
+												personal information.
+											</Card.Text>
+											<Link
+												to="/student-info"
+												style={{
+													textDecoration: "none",
+												}}
+											>
+												<Button variant="primary">
+													View Info
+												</Button>
+											</Link>
+										</Card.Body>
+									</Card>
+									<Card>
+										<Card.Img
+											className="mx-auto my-3"
+											style={{ maxWidth: "80%" }}
+											variant="top"
+											src={MagnifyingImg}
+										/>
+										<Card.Body>
+											<Card.Title>
+												Teacher Locator
+											</Card.Title>
+											<Card.Text>
+												Find what room a teacher will be
+												in on a specific day.
+											</Card.Text>
+											<Link
+												to="/schedule"
+												style={{
+													textDecoration: "none",
+												}}
+											>
+												<Button variant="primary">
+													Find Teacher
+												</Button>
+											</Link>
+										</Card.Body>
+									</Card>
+								</CardGroup>
 							</div>
-						</div>
-					) : (
-						<LoginModal />
-					)}
+						) : (
+							<LoginModal />
+						)}
+					</div>
 				</div>
 				<Footer />
 			</div>

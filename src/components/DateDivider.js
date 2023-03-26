@@ -3,20 +3,22 @@ import React, { Component } from "react";
 import "./DateDivider.css";
 
 export class DateDivider extends Component {
-    render() {
-        return (
-            <div
-                id="date-div"
-                style={{
-                    backgroundColor: this.props.color
-                        ? this.props.color
-                        : "var(--orange-alt)",
-                }}
-            >
-                <h3>{this.props.date}</h3>
-            </div>
-        );
-    }
+	render() {
+		return (
+			<div
+				className="date-div"
+				style={{
+					backgroundColor: this.props.color
+						? this.props.color
+						: "var(--orange-alt)",
+				}}
+			>
+				<strong>
+					<h5 className="date-text my-auto">{this.props.date}</h5>
+				</strong>
+			</div>
+		);
+	}
 }
 
 export default DateDivider;

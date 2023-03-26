@@ -79,13 +79,19 @@ const Schedule = () => {
 								name: "NO CLUB SELECTED",
 								description:
 									"Please select a club for this day.",
-								host: "Admin",
+								hostName: "Admin",
 								roomName: "Main Office",
-								weekdayStr: "Mon Tue Wed Thu Fri",
+								repeatDays: [],
 							};
 						}
 						// Push either the selected enrichment OR an
 						// empty template enrichment.
+						let weekdayStr = currEnrich.repeatDays.map(
+							(day) => day.day + " "
+						);
+						if (weekdayStr == "") {
+							weekdayStr = "Does not repeat";
+						}
 						newEnrichmentList.push(
 							!isWeekend ? (
 								<div>
@@ -99,8 +105,8 @@ const Schedule = () => {
 										description={currEnrich.description}
 										date={currDate}
 										descOverride="Click to view enrichment information."
-										weekdayStr={currEnrich.weekdayStr}
-										host={currEnrich.host}
+										weekdayStr={weekdayStr}
+										host={currEnrich.hostName}
 										roomName={currEnrich.roomName}
 										updateEnrichments={updateEnrichments}
 									/>

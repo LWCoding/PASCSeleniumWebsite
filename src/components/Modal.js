@@ -47,14 +47,34 @@ const Modal = (props) => {
 				return res.json();
 			})
 			.then((json) => {
-				loadEnrich(json.enrichments);
+				let enrichments = json.enrichments;
+				const weekday = [
+					"Sunday",
+					"Monday",
+					"Tuesday",
+					"Wednesday",
+					"Thursday",
+					"Friday",
+					"Saturday",
+				];
+				let dotw = weekday[new Date(props.date).getDay()];
+				dotw = dotw.charAt(0).toUpperCase() + dotw.slice(1, 3);
+				enrichments = enrichments.filter((e) => {
+					return (
+						(e.repeats &&
+							e.repeatDays.find((d) => d.day == dotw) != null) ||
+						new Date(e.singleDay).toDateString() ==
+							new Date(props.date).toDateString()
+					);
+				});
+				loadEnrich(enrichments);
 			});
 	}, []);
 
 	return (
 		<div>
 			<div className="modal-bg" onClick={() => props.setIsOpen(false)} />
-			<div className="modal">
+			<div className="selenium-modal">
 				<img
 					src={closeBtn}
 					alt="Close button"

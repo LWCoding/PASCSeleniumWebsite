@@ -13,17 +13,19 @@ function EnrichBlock(props) {
 	return (
 		<div>
 			<div
-				id="enrichment-block"
+				className="enrichment-block p-3"
 				onClick={() => {
 					setIsOpen(true);
 				}}
 			>
-				<h2 id="enrichment-title">
-					{props.name} <br id="enrichment-add-info-break" />
-					<span id="enrichment-add-info">{props.weekdayStr}</span>
+				<h2 className="enrichment-title">
+					{props.name} <br className="d-sm-none d-block" />
+					<span className="enrichment-add-info ps-1">
+						{props.weekdayStr}
+					</span>
 				</h2>
-				<p id="enrichment-description">
-					{props.descOverride ? (
+				<p className="enrichment-description ps-3 my-1">
+					{props.descOveride ? (
 						<i>{props.descOverride}</i>
 					) : props.description.length > maxDescriptionLength ? (
 						props.description.substring(0, 200).trim() + "..."
@@ -31,7 +33,7 @@ function EnrichBlock(props) {
 						props.description
 					)}
 				</p>
-				<p id="enrichment-about">
+				<p className="enrichment-about my-0">
 					Enrichment led by {props.host} in {props.roomName}.
 				</p>
 			</div>

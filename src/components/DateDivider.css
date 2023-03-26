@@ -1,5 +1,9 @@
-#date-div {
+.date-div {
     background-color: var(--orange-alt);
     width: calc(100vw - 60px);
     padding: 0.2em 1em;
+}
+
+.date-text {
+    font-weight: 700 !important;
 }

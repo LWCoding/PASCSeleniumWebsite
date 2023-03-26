@@ -37,7 +37,7 @@ export default class RegisterAuth extends Component {
 			},
 		})
 			.then((res) => {
-				if (res.status == 200) {
+				if (res.status === 200) {
 					window.location.reload();
 				}
 				return res.json();

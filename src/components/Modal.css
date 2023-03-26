@@ -24,7 +24,7 @@
     cursor: pointer;
 }
 
-.modal {
+.selenium-modal {
     position: fixed;
     top: 50%;
     left: 50%;

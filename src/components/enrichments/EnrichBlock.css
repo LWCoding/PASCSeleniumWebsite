@@ -1,46 +1,32 @@
-#enrichment-block {
+.enrichment-block {
     width: calc(100vw - 60px);
     position: relative;
 }
 
-#enrichment-block {
+.enrichment-block {
     border-top: 10px solid var(--orange);
     background-color: white;
-    padding: 15px;
 }
 
-#enrichment-block:hover {
+.enrichment-block:hover {
     cursor: pointer;
     background-color: rgb(236, 236, 236);
 }
 
-#enrichment-title {
-    font-size: 1.3em;
+.enrichment-title {
+    font-size: 1.4em;
 }
 
-#enrichment-add-info {
+.enrichment-add-info {
     color: rgb(120, 120, 120);
-    margin-left: 0.5ch;
     font-style: italic;
     font-size: 0.65em;
 }
 
-#enrichment-description {
-    padding-left: 2ch;
-    margin: 0.7ch 0;
+.enrichment-description {
     border-left: 4px solid rgb(180, 180, 180);
 }
 
-#enrichment-about {
+.enrichment-about {
     font-style: italic;
-}
-
-#enrichment-add-info-break {
-    display: none;
-}
-
-@media only screen and (max-width: 612px) {
-    #enrichment-add-info-break {
-        display: block;
-    }
 }
