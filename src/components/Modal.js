@@ -62,9 +62,9 @@ const Modal = (props) => {
 				enrichments = enrichments.filter((e) => {
 					return (
 						(e.repeats &&
-							e.repeatDays.find((d) => d.day == dotw) != null) ||
-						new Date(e.singleDay).toDateString() ==
-							new Date(props.date).toDateString()
+							e.repeatDays.find((d) => d.day === dotw) != null) ||
+						(!e.repeats && new Date(e.singleDay).toDateString() ===
+							new Date(props.date).toDateString())
 					);
 				});
 				loadEnrich(enrichments);

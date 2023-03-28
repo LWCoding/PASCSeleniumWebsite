@@ -243,7 +243,7 @@ export class CreateEnrich extends Component {
 								placeholder="Room 000"
 							/>
 						</Form.Group>
-						This enrichment is...
+						<p className="mb-1">This enrichment is...</p>
 						<Form.Group className="mb-1">
 							<Form.Check
 								name="time-choice"
@@ -263,10 +263,10 @@ export class CreateEnrich extends Component {
 							/>
 						</Form.Group>
 					</Form>
-					<div id="create-enrichment-time">
+					<div className="mb-3" id="create-enrichment-time">
 						{this.state.isSingleDay ? (
 							<div id="single-day-container">
-								<p>Active on the following day:</p>
+								<p className="mb-1">Active on the following day:</p>
 								<input
 									onChange={this.handleDateChange}
 									type="date"
@@ -275,7 +275,7 @@ export class CreateEnrich extends Component {
 							</div>
 						) : (
 							<div id="weekdays-container">
-								Operates on the following weekdays:
+								<p className="mb-1">Operates on the following weekdays:</p>
 								<Form.Group className="mb-1">
 									<Form.Check
 										name="weekday"

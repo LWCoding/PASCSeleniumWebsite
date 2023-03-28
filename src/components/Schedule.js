@@ -127,7 +127,7 @@ const Schedule = () => {
 	}, []);
 
 	return (
-		<div id="schedule-block">
+		<div className="mt-2" id="schedule-block">
 			<HeaderBlock text="My Schedule" />
 			<div className="spacer-md" />
 			{enrichments}
